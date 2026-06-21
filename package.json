@@ -1,0 +1,30 @@
+{
+  "name": "yarn-followup-app",
+  "version": "1.0.0",
+  "description": "Collaborative web application for Yarn and Sewing Thread follow up",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"node server.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "lucide-react": "^0.395.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "xlsx": "^0.18.5",
+    "exceljs": "^4.4.0",
+    "@supabase/supabase-js": "^2.43.4",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^8.2.2",
+    "vite": "^5.2.11"
+  }
+}
