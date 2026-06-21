@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 // Load environment variables from .env
 dotenv.config();
 
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_KEY || '';
+const supabaseUrl = process.env.SUPABASE_URL || 'https://placeholder-project-id.supabase.co';
+const supabaseKey = process.env.SUPABASE_KEY || 'placeholder-anon-key-string-to-prevent-startup-crash-on-vercel';
 
-if (!supabaseUrl || !supabaseKey) {
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
   console.warn('WARNING: SUPABASE_URL or SUPABASE_KEY is missing from environment. Database connection will fail.');
 }
 
