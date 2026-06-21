@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { db } from './database.js';
 import { excelSync } from './excel_sync.js';
 
@@ -241,7 +242,7 @@ app.get('/api/yarn/download', async (req, res) => {
     const list = await db.getYarn();
     const result = getFilteredRecordsWithoutPagination(list, search, status);
     
-    const excelFile = path.join(process.cwd(), 'Yarn_Filtered_Report.xlsx');
+    const excelFile = path.join(os.tmpdir(), 'Yarn_Filtered_Report.xlsx');
     await excelSync.exportSingleSheetToExcel(result, true, excelFile);
     
     res.download(excelFile, 'Yarn_Follow_Up_Management_Report.xlsx', (err) => {
@@ -331,7 +332,7 @@ app.get('/api/thread/download', async (req, res) => {
     const list = await db.getThread();
     const result = getFilteredRecordsWithoutPagination(list, search, status);
     
-    const excelFile = path.join(process.cwd(), 'Thread_Filtered_Report.xlsx');
+    const excelFile = path.join(os.tmpdir(), 'Thread_Filtered_Report.xlsx');
     await excelSync.exportSingleSheetToExcel(result, false, excelFile);
     
     res.download(excelFile, 'Sewing_Thread_Tracking_Report.xlsx', (err) => {
@@ -515,9 +516,13 @@ app.post('/api/sync/export', async (req, res) => {
 
 app.get('/api/sync/download', async (req, res) => {
   try {
-    await excelSync.exportToExcel();
-    const excelFile = path.join(process.cwd(), 'Yarn Follow up.xlsx');
-    res.download(excelFile, 'Yarn_Follow_Up_Management_Report.xlsx');
+    const tempFile = path.join(os.tmpdir(), 'Yarn_Follow_Up_Management_Report_Full.xlsx');
+    await excelSync.exportToExcel(tempFile);
+    res.download(tempFile, 'Yarn_Follow_Up_Management_Report.xlsx', (err) => {
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -618,7 +623,11 @@ if (fs.existsSync(distPath)) {
 }
 
 // Start Server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Coworkers can access on http://<your-ip>:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Coworkers can access on http://<your-ip>:${PORT}`);
+  });
+}
+
+export default app;

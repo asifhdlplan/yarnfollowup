@@ -4,6 +4,7 @@ const require = createRequire(import.meta.url);
 const ExcelJS = require('exceljs');
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { db } from './database.js';
 
 const EXCEL_PATH = path.join(process.cwd(), 'Yarn Follow up.xlsx');
@@ -428,12 +429,13 @@ export const excelSync = {
     };
   },
 
-  async exportToExcel() {
+  async exportToExcel(outputPath = null) {
+    const targetPath = outputPath || (process.env.VERCEL ? path.join(os.tmpdir(), 'Yarn Follow up.xlsx') : EXCEL_PATH);
     const currentDb = await db.read();
     const workbook = new ExcelJS.Workbook();
     await generateFormalSheet(workbook, currentDb.yarn, true);
     await generateFormalSheet(workbook, currentDb.thread, false);
-    await workbook.xlsx.writeFile(EXCEL_PATH);
+    await workbook.xlsx.writeFile(targetPath);
     return true;
   },
 
