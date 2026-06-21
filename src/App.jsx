@@ -74,9 +74,8 @@ export default function App() {
     <div className="app-container">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="logo-section">
-          <span className="logo-icon">🧶</span>
-          <span className="logo-text">YarnFollowUp</span>
+        <div className="logo-section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '1.5rem' }}>
+          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '100%', maxHeight: '55px', objectFit: 'contain' }} />
         </div>
         
         <nav className="nav-links">

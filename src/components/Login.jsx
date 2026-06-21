@@ -90,10 +90,8 @@ export default function Login({ onLoginSuccess }) {
         textAlign: 'center'
       }}>
         {/* Logo Section */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <span style={{ fontSize: '3.5rem', display: 'block', marginBottom: '0.75rem', filter: 'drop-shadow(0 0 10px rgba(16,185,129,0.3))' }}>🧶</span>
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#f8fafc', margin: 0, letterSpacing: '-0.025em' }}>YarnFollowUp</h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginTop: '0.5rem' }}>Procurement & Tracking Management System</p>
+        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '240px', height: 'auto', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }} />
         </div>
 
         {error && (
@@ -240,7 +238,39 @@ export default function Login({ onLoginSuccess }) {
           </button>
         </form>
 
-        <p style={{ marginTop: '2rem', fontSize: '0.75rem', color: '#475569' }}>
+        <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: '#94a3b8' }}>
+          Created by{' '}
+          <a
+            href="https://www.facebook.com/asif.j30"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontWeight: 700,
+              textDecoration: 'none',
+              background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              borderBottom: '2px dashed rgba(16, 185, 129, 0.4)',
+              paddingBottom: '2px',
+              transition: 'all 0.3s ease',
+              display: 'inline-block'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.borderBottomStyle = 'solid';
+              e.target.style.borderBottomColor = '#3b82f6';
+              e.target.style.filter = 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.6))';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.borderBottomStyle = 'dashed';
+              e.target.style.borderBottomColor = 'rgba(16, 185, 129, 0.4)';
+              e.target.style.filter = 'none';
+            }}
+          >
+            Asif
+          </a>
+        </p>
+
+        <p style={{ marginTop: '1.25rem', fontSize: '0.75rem', color: '#475569', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
           Confidential internal corporate application. Unauthorized access is strictly prohibited.
         </p>
       </div>
