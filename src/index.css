@@ -2,32 +2,32 @@
 :root {
   --font-family: 'Outfit', sans-serif;
   
-  /* Color Palette - Premium Sage & Forest Green Theme */
-  --bg-primary: #f4f7f4;
+  /* Color Palette - Customized corporate branding */
+  --bg-primary: #f5f6f6;        /* Light grey from palette */
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #edf2ed;
-  --border-color: #dbe3db;
-  --border-color-hover: #c4cfc4;
+  --bg-card-hover: #edf3f4;
+  --border-color: #dce4e5;
+  --border-color-hover: #b8c5c7;
   
-  --primary-color: #1e5c70;
-  --primary-glow: rgba(30, 92, 112, 0.08);
+  --primary-color: #2c363f;     /* Dark slate from palette */
+  --primary-glow: rgba(44, 54, 63, 0.08);
   
-  --success-color: #5c9023;
-  --success-glow: rgba(92, 144, 35, 0.08);
+  --success-color: #73a9ad;     /* Muted teal from palette */
+  --success-glow: rgba(115, 169, 173, 0.08);
   
-  --warning-color: #7d8804;
-  --warning-glow: rgba(190, 200, 60, 0.12);
+  --warning-color: #f24c24;     /* Vermilion orange from palette */
+  --warning-glow: rgba(242, 76, 36, 0.12);
   
-  --danger-color: #a63232;
-  --danger-glow: rgba(166, 50, 50, 0.08);
+  --danger-color: #f24c24;      /* Vermilion orange from palette */
+  --danger-glow: rgba(242, 76, 36, 0.08);
   
-  --info-color: #1e5c70;
-  --info-glow: rgba(30, 92, 112, 0.08);
+  --info-color: #73a9ad;        /* Muted teal from palette */
+  --info-glow: rgba(115, 169, 173, 0.08);
 
-  --text-primary: #2b3e1a;
-  --text-secondary: #4a573d;
-  --text-muted: #889679;
+  --text-primary: #2c363f;      /* Dark slate from palette */
+  --text-secondary: #4d5b66;    /* Medium slate-grey */
+  --text-muted: #82929e;        /* Light slate-grey */
   
   --sidebar-width: 260px;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

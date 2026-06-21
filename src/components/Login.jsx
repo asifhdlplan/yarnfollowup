@@ -90,8 +90,16 @@ export default function Login({ onLoginSuccess }) {
         textAlign: 'center'
       }}>
         {/* Logo Section */}
-        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '240px', height: 'auto', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }} />
+        <div style={{ 
+          marginBottom: '2rem', 
+          display: 'flex', 
+          justifyContent: 'center',
+          background: '#ffffff',
+          padding: '0.85rem 1.25rem',
+          borderRadius: '16px',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(16, 185, 129, 0.1)'
+        }}>
+          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '100%', maxHeight: '60px', objectFit: 'contain' }} />
         </div>
 
         {error && (
