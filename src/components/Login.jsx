@@ -34,7 +34,7 @@ export default function Login({ onLoginSuccess }) {
       }
     } catch (err) {
       console.error(err);
-      setError('Failed to connect to the authentication server.');
+      setError('Failed to connect to the authentication server. Please ensure the backend server is running.');
     } finally {
       setLoading(false);
     }
@@ -46,18 +46,18 @@ export default function Login({ onLoginSuccess }) {
       alignItems: 'center',
       justifyContent: 'center',
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)',
+      background: '#F5F5F5', // Light grey background as requested
       padding: '1.5rem',
       fontFamily: 'Outfit, sans-serif',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Dynamic Glowing Background Orbs */}
+      {/* Dynamic Glowing Background Orbs in Palette Accent Colors */}
       <div style={{
         position: 'absolute',
         width: '300px',
         height: '300px',
-        background: 'rgba(16, 185, 129, 0.15)',
+        background: 'rgba(115, 169, 173, 0.15)', // Muted Teal orb
         borderRadius: '50%',
         filter: 'blur(80px)',
         top: '10%',
@@ -68,7 +68,7 @@ export default function Login({ onLoginSuccess }) {
         position: 'absolute',
         width: '400px',
         height: '400px',
-        background: 'rgba(59, 130, 246, 0.12)',
+        background: 'rgba(44, 54, 63, 0.05)', // Dark Slate orb
         borderRadius: '50%',
         filter: 'blur(100px)',
         bottom: '10%',
@@ -78,34 +78,25 @@ export default function Login({ onLoginSuccess }) {
 
       {/* Login Card */}
       <div className="login-card" style={{
-        background: 'rgba(30, 41, 59, 0.45)',
-        backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        background: '#ffffff', // Solid white card
+        border: '1px solid #dce4e5', // Soft border
         borderRadius: '24px',
         width: '100%',
         maxWidth: '420px',
         padding: '3rem 2.5rem',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        boxShadow: '0 20px 40px -15px rgba(44, 54, 63, 0.15)', // Soft slate shadow
         zIndex: 1,
         textAlign: 'center'
       }}>
         {/* Logo Section */}
-        <div style={{ 
-          marginBottom: '2rem', 
-          display: 'flex', 
-          justifyContent: 'center',
-          background: '#ffffff',
-          padding: '0.85rem 1.25rem',
-          borderRadius: '16px',
-          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(16, 185, 129, 0.1)'
-        }}>
-          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '100%', maxHeight: '60px', objectFit: 'contain' }} />
+        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+          <img src="/logo.png" alt="Ha-meem Denim Ltd." style={{ maxWidth: '240px', height: 'auto' }} />
         </div>
 
         {error && (
           <div style={{
-            background: 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
+            background: 'rgba(242, 76, 36, 0.08)', // Vermilion/Orange alert background
+            border: '1px solid rgba(242, 76, 36, 0.2)',
             borderRadius: '12px',
             padding: '0.75rem 1rem',
             marginBottom: '1.5rem',
@@ -113,7 +104,7 @@ export default function Login({ onLoginSuccess }) {
             alignItems: 'center',
             gap: '0.5rem',
             textAlign: 'left',
-            color: '#fca5a5',
+            color: '#f24c24', // Vermilion/Orange text
             fontSize: '0.85rem'
           }}>
             <AlertCircle size={16} style={{ flexShrink: 0 }} />
@@ -124,9 +115,9 @@ export default function Login({ onLoginSuccess }) {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {/* Username Input */}
           <div style={{ textAlign: 'left' }}>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Username</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#4d5b66', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Username</label>
             <div style={{ position: 'relative' }}>
-              <User size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+              <User size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#82929e' }} />
               <input
                 type="text"
                 value={username}
@@ -135,21 +126,21 @@ export default function Login({ onLoginSuccess }) {
                 style={{
                   width: '100%',
                   padding: '0.85rem 1rem 0.85rem 2.75rem',
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#ffffff',
+                  border: '1px solid #dce4e5',
                   borderRadius: '12px',
-                  color: '#f8fafc',
+                  color: '#2c363f',
                   fontSize: '0.9rem',
                   outline: 'none',
                   transition: 'all 0.2s ease',
                   boxSizing: 'border-box'
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = 'var(--primary-color)';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.15)';
+                  e.target.style.borderColor = '#73a9ad'; // Muted Teal focus
+                  e.target.style.boxShadow = '0 0 0 3px rgba(115, 169, 173, 0.15)';
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = 'rgba(255,255,255,0.07)';
+                  e.target.style.borderColor = '#dce4e5';
                   e.target.style.boxShadow = 'none';
                 }}
                 disabled={loading}
@@ -160,9 +151,9 @@ export default function Login({ onLoginSuccess }) {
 
           {/* Password Input */}
           <div style={{ textAlign: 'left' }}>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Password</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: '#4d5b66', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Password</label>
             <div style={{ position: 'relative' }}>
-              <Lock size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+              <Lock size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#82929e' }} />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}
@@ -171,21 +162,21 @@ export default function Login({ onLoginSuccess }) {
                 style={{
                   width: '100%',
                   padding: '0.85rem 2.75rem 0.85rem 2.75rem',
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#ffffff',
+                  border: '1px solid #dce4e5',
                   borderRadius: '12px',
-                  color: '#f8fafc',
+                  color: '#2c363f',
                   fontSize: '0.9rem',
                   outline: 'none',
                   transition: 'all 0.2s ease',
                   boxSizing: 'border-box'
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = 'var(--primary-color)';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.15)';
+                  e.target.style.borderColor = '#73a9ad'; // Muted Teal focus
+                  e.target.style.boxShadow = '0 0 0 3px rgba(115, 169, 173, 0.15)';
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = 'rgba(255,255,255,0.07)';
+                  e.target.style.borderColor = '#dce4e5';
                   e.target.style.boxShadow = 'none';
                 }}
                 disabled={loading}
@@ -200,7 +191,7 @@ export default function Login({ onLoginSuccess }) {
                   transform: 'translateY(-50%)',
                   background: 'none',
                   border: 'none',
-                  color: '#64748b',
+                  color: '#82929e',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -216,7 +207,7 @@ export default function Login({ onLoginSuccess }) {
             type="submit"
             disabled={loading}
             style={{
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              background: 'linear-gradient(135deg, #73a9ad 0%, #2c363f 100%)', // Muted Teal to Dark Slate gradient
               color: '#fff',
               border: 'none',
               padding: '0.9rem',
@@ -224,7 +215,7 @@ export default function Login({ onLoginSuccess }) {
               fontSize: '0.95rem',
               fontWeight: 600,
               cursor: loading ? 'not-allowed' : 'pointer',
-              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.25)',
+              boxShadow: '0 4px 12px rgba(115, 169, 173, 0.25)',
               transition: 'all 0.2s ease',
               marginTop: '0.5rem',
               display: 'flex',
@@ -246,7 +237,7 @@ export default function Login({ onLoginSuccess }) {
           </button>
         </form>
 
-        <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: '#94a3b8' }}>
+        <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: '#4d5b66' }}>
           Created by{' '}
           <a
             href="https://www.facebook.com/asif.j30"
@@ -255,22 +246,22 @@ export default function Login({ onLoginSuccess }) {
             style={{
               fontWeight: 700,
               textDecoration: 'none',
-              background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+              background: 'linear-gradient(135deg, #73a9ad 0%, #f24c24 100%)', // Teal to Vermilion gradient
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              borderBottom: '2px dashed rgba(16, 185, 129, 0.4)',
+              borderBottom: '2px dashed rgba(115, 169, 173, 0.4)',
               paddingBottom: '2px',
               transition: 'all 0.3s ease',
               display: 'inline-block'
             }}
             onMouseEnter={(e) => {
               e.target.style.borderBottomStyle = 'solid';
-              e.target.style.borderBottomColor = '#3b82f6';
-              e.target.style.filter = 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.6))';
+              e.target.style.borderBottomColor = '#f24c24';
+              e.target.style.filter = 'drop-shadow(0 0 8px rgba(242, 76, 36, 0.4))';
             }}
             onMouseLeave={(e) => {
               e.target.style.borderBottomStyle = 'dashed';
-              e.target.style.borderBottomColor = 'rgba(16, 185, 129, 0.4)';
+              e.target.style.borderBottomColor = 'rgba(115, 169, 173, 0.4)';
               e.target.style.filter = 'none';
             }}
           >
@@ -278,7 +269,7 @@ export default function Login({ onLoginSuccess }) {
           </a>
         </p>
 
-        <p style={{ marginTop: '1.25rem', fontSize: '0.75rem', color: '#475569', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
+        <p style={{ marginTop: '1.25rem', fontSize: '0.75rem', color: '#82929e', borderTop: '1px solid #dce4e5', paddingTop: '1rem' }}>
           Confidential internal corporate application. Unauthorized access is strictly prohibited.
         </p>
       </div>

@@ -9,10 +9,7 @@ import Login from './components/Login';
 import AdminPanel from './components/AdminPanel';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem('currentUser');
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [currentUser, setCurrentUser] = useState(null);
   
   const [activeTab, setActiveTab] = useState('dashboard');
   const [notification, setNotification] = useState(null);
@@ -31,13 +28,11 @@ export default function App() {
   };
 
   const handleLoginSuccess = (user) => {
-    localStorage.setItem('currentUser', JSON.stringify(user));
     setCurrentUser(user);
     showNotification(`Welcome back, ${user.username}!`);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('currentUser');
     setCurrentUser(null);
     setAdminAuthorized(false);
     setActiveTab('dashboard');
